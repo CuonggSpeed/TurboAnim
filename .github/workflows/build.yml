@@ -1,0 +1,18 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install ldid xz dpkg make
+      - run: |
+          git clone --recursive https://github.com/roothide/theos.git $HOME/theos
+          echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+      - run: gmake package FINALPACKAGE=1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TurboAnim-deb
+          path: packages/*.deb
