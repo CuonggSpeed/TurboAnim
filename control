@@ -1,0 +1,9 @@
+Package: com.local.turboanim
+Name: TurboAnim
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Speed up SpringBoard animations
+Maintainer: me
+Author: me
+Section: Tweaks
+Depends: mobilesubstrate
